@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FastEC.iml" filepath="$PROJECT_DIR$/FastEC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/app.iml" filepath="$PROJECT_DIR$/example/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/latte-annotations/latte-annotations.iml" filepath="$PROJECT_DIR$/latte-annotations/latte-annotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/latte-compiler/latte-compiler.iml" filepath="$PROJECT_DIR$/latte-compiler/latte-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/latte-core/latte-core.iml" filepath="$PROJECT_DIR$/latte-core/latte-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/latte-ec/latteec.iml" filepath="$PROJECT_DIR$/latte-ec/latteec.iml" />
+    </modules>
+  </component>
+</project>
