@@ -1,22 +1,25 @@
 package com.example.cyt.fastec;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.app.Application;
 
 import com.example.latte.app.Latte;
 import com.example.latte.ec.icon.FontEcModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
-public class MainActivity extends AppCompatActivity {
+
+/**
+ * Created by CYT on 2018/4/3.
+ */
+
+public class ExampleApp extends Application{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void onCreate() {
+        super.onCreate();
         Latte.init(this)
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
-                .withApiHost("http:/.127.0.0.1/")
+                .withApiHost("http://127.0.0.1/")
                 .configure();
     }
 }
