@@ -1,9 +1,12 @@
 package com.example.latte.net;
 
+import android.content.Context;
+
 import com.example.latte.net.Callback.IError;
 import com.example.latte.net.Callback.IFailure;
 import com.example.latte.net.Callback.IRequest;
 import com.example.latte.net.Callback.ISuccess;
+import com.example.latte.ui.LoaderStyle;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -19,11 +22,13 @@ public class RestClientBuilder {
 
     private  String mUrl;
     private  static final WeakHashMap<String,Object> PARAMS = RestCreator.getParams();
-    private  IRequest mIRequest;
-    private  ISuccess mISuccess;
-    private  IFailure mIFailure;
-    private  IError mIError;
-    private  RequestBody mBody;
+    private  IRequest mIRequest=null;
+    private  ISuccess mISuccess=null;
+    private  IFailure mIFailure=null;
+    private  IError mIError=null;
+    private  RequestBody mBody=null;
+    private Context mContext=null;
+    private LoaderStyle mLoaderStyle=null;
 
     RestClientBuilder(){
 
@@ -76,9 +81,21 @@ public class RestClientBuilder {
         return PARAMS;
     }
 
+    public final RestClientBuilder loader(Context context,LoaderStyle loaderStyle){
+        this.mContext = context;
+        this.mLoaderStyle = loaderStyle;
+        return this;
+    }
+
+    public final RestClientBuilder loader(Context context){
+        this.mContext = context;
+        this.mLoaderStyle = LoaderStyle.BallClipRotatePulseIndicator;
+        return this;
+    }
+
     public final RestClient build() {
         return new RestClient(mUrl,PARAMS,
                 mIRequest, mISuccess, mIFailure,
-                mIError, mBody);
+                mIError, mBody,mLoaderStyle,mContext);
     }
 }
