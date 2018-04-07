@@ -15,5 +15,8 @@ public enum ConfigType {
     API_HOST,//配置网络请求的域名
     APPLICATION_CONTEXT,//全局的上下文
     CONFIG_READY,
-    ICON
+    ICON,
+    LOADER_DELAYED,
+    INTERCEPTOR,
+    HANDLER
 }

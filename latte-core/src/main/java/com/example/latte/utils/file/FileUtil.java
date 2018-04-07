@@ -248,7 +248,7 @@ public class FileUtil {
     /**
      * 通知系统刷新系统相册，使照片展现出来
      */
-    /*private static void refreshDCIM() {
+    private static void refreshDCIM() {
         if (Build.VERSION.SDK_INT >= 19) {
             //兼容android4.4版本，只扫描存放照片的目录
             MediaScannerConnection.scanFile(Latte.getApplicationContext(),
@@ -259,12 +259,12 @@ public class FileUtil {
             Latte.getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" +
                     Environment.getExternalStorageDirectory())));
         }
-    }*/
+    }
 
     /**
      * 读取raw目录中的文件,并返回为字符串
      */
-    /*public static String getRawFile(int id) {
+    public static String getRawFile(int id) {
         final InputStream is = Latte.getApplicationContext().getResources().openRawResource(id);
         final BufferedInputStream bis = new BufferedInputStream(is);
         final InputStreamReader isr = new InputStreamReader(bis);
@@ -288,18 +288,18 @@ public class FileUtil {
             }
         }
         return stringBuilder.toString();
-    }*/
+    }
 
 
-    /*public static void setIconFont(String path, TextView textView) {
+    public static void setIconFont(String path, TextView textView) {
         final Typeface typeface = Typeface.createFromAsset(Latte.getApplicationContext().getAssets(), path);
         textView.setTypeface(typeface);
-    }*/
+    }
 
     /**
      * 读取assets目录下的文件,并返回字符串
      */
-    /*public static String getAssetsFile(String name) {
+    public static String getAssetsFile(String name) {
         InputStream is = null;
         BufferedInputStream bis = null;
         InputStreamReader isr = null;
@@ -342,7 +342,7 @@ public class FileUtil {
         } else {
             return null;
         }
-    }*/
+    }
 
     public static String getRealFilePath(final Context context, final Uri uri) {
         if (null == uri) return null;
