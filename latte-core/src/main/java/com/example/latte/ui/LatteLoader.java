@@ -1,14 +1,13 @@
 package com.example.latte.ui;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialog;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.diabin.latte.R;
-import com.example.latte.utils.DimenUtil;
+import com.example.latte.utils.dimen.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ public class LatteLoader {
 
     private static final ArrayList<AppCompatDialog> LOADERS = new ArrayList<>();
 
+    //Loader默认样式
     private static final String DEFAULT_LOADER = LoaderStyle.BallClipRotatePulseIndicator.name();
 
     public static void showLoading(Context context,Enum<LoaderStyle>type){

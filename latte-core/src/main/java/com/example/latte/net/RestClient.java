@@ -7,6 +7,7 @@ import com.example.latte.net.Callback.IFailure;
 import com.example.latte.net.Callback.IRequest;
 import com.example.latte.net.Callback.ISuccess;
 import com.example.latte.net.Callback.RequestCallback;
+import com.example.latte.net.download.DownloadHandler;
 import com.example.latte.ui.LatteLoader;
 import com.example.latte.ui.LoaderStyle;
 
@@ -37,6 +38,9 @@ public class RestClient {
     private final LoaderStyle LOADER_STYLE;
     private final Context CONTEXT;
     private final File FILE;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
 
     public RestClient(String url,
                       Map<String, Object> PARAMS,
@@ -47,7 +51,10 @@ public class RestClient {
                       RequestBody body,
                       LoaderStyle loader_style,
                       Context context,
-                      File file) {
+                      File file,
+                      String downloadDir,
+                      String extension,
+                      String name) {
         this.URL = url;
         PARAMS.putAll(PARAMS);
         this.REQUEST = request;
@@ -58,6 +65,9 @@ public class RestClient {
         this.LOADER_STYLE = loader_style;
         this.CONTEXT = context;
         this.FILE = file;
+        this.DOWNLOAD_DIR = downloadDir;
+        this.EXTENSION = extension;
+        this.NAME = name;
     }
 
     public static RestClientBuilder builder(){
@@ -146,5 +156,13 @@ public class RestClient {
 
     public final void delete(){
         request(HttpMethod.DELETE);
+    }
+
+    public final void upload(){
+        request(HttpMethod.UPLOAD);
+    }
+
+    public final void download(){
+        new DownloadHandler(URL,REQUEST,SUCCESS,FAILURE,ERROR,DOWNLOAD_DIR,EXTENSION,NAME).handleDownload();
     }
 }
