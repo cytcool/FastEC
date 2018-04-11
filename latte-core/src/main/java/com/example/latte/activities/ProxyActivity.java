@@ -2,18 +2,20 @@ package com.example.latte.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ContentFrameLayout;
 
 import com.diabin.latte.R;
 import com.example.latte.delegates.LatteDelegate;
 
+import me.yokeyword.fragmentation.ISupportActivity;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
  * Created by CYT on 2018/4/3.
  */
 
-public abstract class ProxyActivity extends SupportActivity {
+public abstract class ProxyActivity extends SupportActivity implements ISupportActivity {
 
     public abstract LatteDelegate setRootDelegate();
 
@@ -29,7 +31,7 @@ public abstract class ProxyActivity extends SupportActivity {
         container.setId(R.id.delegate_container);
         setContentView(container);
         if (savedInstanceState == null){
-            loadRootFragment(R.id.delegate_container,setRootDelegate());
+           loadRootFragment(R.id.delegate_container,setRootDelegate());
         }
     }
 

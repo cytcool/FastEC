@@ -54,6 +54,7 @@ public class DownloadHandler {
             REQUEST.onRequestStart();
         }
 
+        //异步任务
         RestCreator.getRestService().download(URL,PARAMS).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
