@@ -70,7 +70,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 
     @Override
     public void onTimer() {
-        ((Activity)(getProxyActivity())).runOnUiThread(new Runnable() {
+        (getProxyActivity()).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (mTvTimer!=null){
