@@ -6,10 +6,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.latte.delegates.LatteDelegate;
+import com.example.latte.ec.sign.SignHandler;
 import com.example.latte.net.Callback.IError;
 import com.example.latte.net.Callback.IFailure;
 import com.example.latte.net.Callback.ISuccess;
 import com.example.latte.net.RestClient;
+
+import org.json.JSONException;
 
 /**
  * Created by CYT on 2018/4/3.
@@ -35,6 +38,11 @@ public class ExampleDelegate extends LatteDelegate{
                     @Override
                     public void onSuccess(String response) {
                         Toast.makeText(getContext(),response,Toast.LENGTH_SHORT).show();
+                        try {
+                            SignHandler.onSignUp(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 })
                 .failure(new IFailure() {

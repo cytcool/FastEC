@@ -1,9 +1,5 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -32,4 +28,7 @@ dependencies {
     implementation project(':latte-ec')
     annotationProcessor project(':latte-compiler')
     compile project(path: ':latte-core')
+
+    compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 }
