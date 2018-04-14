@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 
+import com.example.latte.app.AccountManager;
+import com.example.latte.app.IUserChecker;
 import com.example.latte.delegates.LatteDelegate;
 import com.example.latte.ec.R;
 import com.example.latte.ec.R2;
@@ -33,6 +35,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
     TextView mTvTimer = null;
 
     private Timer mTimer = null;
+    private ILauncherListener mILaucherListener = null;
 
     @OnClick(R2.id.tv_launcher_timer)
     void onClickTimerView(){
@@ -50,6 +53,15 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener){
+            mILaucherListener = (ILauncherListener) activity;
+        }
+    }
+
+
+    @Override
     public Object setLayout() {
         return R.layout.delegate_launcher;
     }
@@ -65,6 +77,21 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
             start(new LauncherScrollDelegate(),SINGLETASK);
         }else {
             //检查用户是否登录
+            AccountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILaucherListener!=null){
+                        mILaucherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILaucherListener!=null){
+                         mILaucherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
         }
     }
 

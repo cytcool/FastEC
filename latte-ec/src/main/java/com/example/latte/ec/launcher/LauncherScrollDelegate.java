@@ -1,5 +1,6 @@
 package com.example.latte.ec.launcher;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -23,6 +24,8 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
     private ConvenientBanner<Integer> mConvenientBanner = null;
     private static final ArrayList<Integer> INTEGERS = new ArrayList<>();
 
+    private ILauncherListener mILaucherListener = null;
+
     private void initBanner(){
         INTEGERS.add(R.mipmap.launcher_01);
         INTEGERS.add(R.mipmap.launcher_02);
@@ -37,6 +40,13 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
                 .setCanLoop(false);
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener){
+            mILaucherListener = (ILauncherListener) activity;
+        }
+    }
 
     @Override
     public Object setLayout() {
